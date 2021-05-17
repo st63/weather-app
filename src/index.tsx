@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
@@ -10,6 +9,7 @@ const Global = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-size: 16px;
+    color: #fff;
     line-height: 24px;
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -23,4 +23,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-reportWebVitals();

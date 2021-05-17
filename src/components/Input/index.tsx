@@ -1,7 +1,8 @@
 import React from 'react';
+import { StyledInput } from './styles';
 
 export const Input = () => {
   return (
-    <input type="text" />
+    <StyledInput type="text" placeholder="Select date" />
   )
 }
