@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyledInput } from './styles';
 
-export const Input = () => {
+export const Input = ({ date, selectDate }: any) => {
   return (
-    <StyledInput type="text" placeholder="Select date" />
+    <StyledInput value={date} onChange={selectDate} type="text" placeholder="Select date" />
   )
 }

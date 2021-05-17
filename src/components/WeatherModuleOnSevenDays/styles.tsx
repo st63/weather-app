@@ -7,6 +7,7 @@ export const ArrowLeft = styled.button`
   transition: background-color 0.7s ease;
   margin: auto 0px auto 20px;
   border: none;
+  outline: none;
   border-radius: 3px;
   &:after {
     content: '';
@@ -30,6 +31,7 @@ export const ArrowRight = styled.button`
   transition: background-color 0.7s ease;
   margin: auto 20px auto 0px;
   border: none;
+  outline: none;
   border-radius: 3px;
   &:after {
     content: '';

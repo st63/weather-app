@@ -8,3 +8,7 @@ export const WrapForModule = styled.div`
 export const Title = styled.h1`
   margin-bottom: 40px;
 `
+
+export const CityIsNotSelectedMessage = styled.div`
+  text-align: center;
+`
