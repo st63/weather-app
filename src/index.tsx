@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const Global = createGlobalStyle`
   * {
@@ -15,11 +15,21 @@ const Global = createGlobalStyle`
   }
 `;
 
+const theme = {
+  media: {
+    largeDesktops: '(max-width: 1470px)',
+    mediumDesktops: '(max-width: 1199px)',
+    smallDesctops: '(max-width: 991px)',
+    tablets: '(max-width: 767px)',
+    phones: ('max-width: 480px'),
+  }
+};
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
     <Global />
     <App />
-  </React.StrictMode>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

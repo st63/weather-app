@@ -6,20 +6,18 @@ export const StyledWeatherCard = styled.div`
   width: 180px;
   margin: 0 auto;
   padding: 10px 14px 0px 14px;
+  text-align: center;
 `
 
 export const Date = styled.div`
   margin: 15px 0px;
-  text-align: center;
 `
 
 export const Degrees = styled.div`
   margin: 15px 4px 0px 0px;
   font-size: 40px;
-  text-align: center;
 `
 
 export const Icon = styled.img`
-  margin-left: 48px;
   margin-top: 12px;
 `

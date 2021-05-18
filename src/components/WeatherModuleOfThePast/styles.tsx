@@ -5,3 +5,4 @@ export const Message = styled.div`
   right: 35px;
   top: 150px;
 `
+

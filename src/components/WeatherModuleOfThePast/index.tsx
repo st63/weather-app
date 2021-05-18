@@ -9,7 +9,7 @@ import { Flex } from '../../styles';
 import { Message } from './styles';
 import { CityIsNotSelectedMessage } from '../styles';
 
-export const WeatherModuleOfThePast = () => {
+export const WeatherModuleOfThePast = (props: any) => {
   const [temp, setTemp] = useState(0);
   const [icon, setIcon] = useState([]);
   const [city, setCity] = useState('Select city');
@@ -69,7 +69,7 @@ export const WeatherModuleOfThePast = () => {
   }
 
   return (
-    <WrapForModule>
+    <WrapForModule {...props}>
       <Title>Какая была погода:</Title>
       <Flex>
         <Select city={city} selectCity={selectCity} />

@@ -17,6 +17,9 @@ export const StyledSelect = styled.select`
     cursor: pointer;
     background-color: rgba(204,204,204,0.5);
   }
+  @media ${props => props.theme.media.largeDesktops} {
+    margin-bottom: 55px;
+  }
 `
 
 export const Option = styled.option`

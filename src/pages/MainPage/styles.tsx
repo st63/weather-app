@@ -6,3 +6,11 @@ export const Border = styled.div`
   position: relative;
   top: 152px;
 `
+
+export const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  @media ${props => props.theme.media.largeDesktops} {
+    flex-direction: column;
+  }
+`
