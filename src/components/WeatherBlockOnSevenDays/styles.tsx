@@ -1,11 +1,26 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-export const ArrowLeft = styled.button`
+export const WeatherContentWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  @media ${'(max-width: 1470px)'} {
+    width: 65%;
+    margin: 0 auto;
+  }
+  @media ${'(max-width: 1199px)'} {
+    width: 85%;
+  }
+  @media ${'(max-width: 991px)'} {
+    width: 100%;
+  }
+`
+
+export const ArrowControlLeft = styled.button`
   width: 30px; 
   height: 30px; 
   background-color: rgba(204,204,204,0.2);
   transition: background-color 0.7s ease;
-  margin: auto 0px auto 20px;
+  margin: auto 0px;
   border: none;
   outline: none;
   border-radius: 3px;
@@ -22,14 +37,17 @@ export const ArrowLeft = styled.button`
       cursor: pointer;
       background-color: rgba(204,204,204,0.5);
   }
+  @media ${'(max-width: 576px)'} {
+    margin: auto;
+  }
 `
 
-export const ArrowRight = styled.button`
+export const ArrowControlRight = styled.button`
   width: 30px; 
   height: 30px; 
   background-color: rgba(204,204,204,0.2);
   transition: background-color 0.7s ease;
-  margin: auto 20px auto 0px;
+  margin: auto 0px;
   border: none;
   outline: none;
   border-radius: 3px;
@@ -45,5 +63,8 @@ export const ArrowRight = styled.button`
   &:hover {
       cursor: pointer;
       background-color: rgba(204,204,204,0.5);
+  }
+  @media ${'(max-width: 576px)'} {
+    margin: auto;
   }
 `

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const StyledSelect = styled.select`
+export const Select = styled.select`
   display: block;
   font-size: 16px;
   font-weight: 700;
@@ -17,8 +17,11 @@ export const StyledSelect = styled.select`
     cursor: pointer;
     background-color: rgba(204,204,204,0.5);
   }
-  @media ${props => props.theme.media.largeDesktops} {
+  @media ${'(max-width: 1470px)'} {
     margin-bottom: 55px;
+  }
+  @media ${'(max-width: 480px)'} {
+    width: 100%;
   }
 `
 

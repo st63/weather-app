@@ -1,8 +1,20 @@
-import React from 'react';
-import { StyledInput } from './styles';
+import React from 'react'
+import moment from 'moment'
+import { Input } from './styles'
+import { IDateInput } from '../../types'
 
-export const Input = ({ date, selectDate }: any) => {
+export const DateInput: React.FC<IDateInput> = ({ selectDate }) => {
+  const startOfAllowedDate: string = moment().add(-5, 'd').format('YYYY-MM-DD')
+  const endOfAllowedDate: string = moment().format('YYYY-MM-DD')
+
   return (
-    <StyledInput value={date} onChange={selectDate} type="text" placeholder="Select date" />
+    <Input
+      onChange={selectDate}
+      onKeyDown={() => false}
+      type="date"
+      min={startOfAllowedDate}
+      max={endOfAllowedDate}
+      placeholder="Select date"
+      required />
   )
 }

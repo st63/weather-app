@@ -1,15 +1,13 @@
-import React from 'react';
-import { WeatherModuleOnSevenDays } from '../../components/WeatherModuleOnSevenDays';
-import { WeatherModuleOfThePast } from '../../components/WeatherModuleOfThePast';
-import { Flex } from './styles';
-import { Border } from './styles';
+import React from 'react'
+import WeatherBlockOnSevenDays from '../../components/WeatherBlockOnSevenDays'
+import WeatherBlockOfThePast from '../../components/WeatherBlockOfThePast'
+import { PageContainer } from './styles'
 
-export const MainPage = (props: any) => {
+export const MainPage = () => {
   return (
-    <Flex {...props}>
-      <WeatherModuleOnSevenDays />
-      <Border />
-      <WeatherModuleOfThePast />
-    </Flex>
+    <PageContainer>
+      <WeatherBlockOnSevenDays />
+      <WeatherBlockOfThePast />
+    </PageContainer>
   )
 }

@@ -1,17 +1,15 @@
-import React from 'react';
-import { MainPage } from './pages/MainPage';
-import { Container } from './styles';
-import { Background } from './styles';
-import * as types from 'styled-components/cssprop';
+import React, { FC } from 'react'
+import { MainPage } from './pages/MainPage'
+import { Container, Background } from './styles'
 
-function App() {
+const App: FC = () => {
   return (
     <Background>
       <Container>
         <MainPage />
       </Container>
     </Background>
-  );
+  )
 }
 
-export default App;
+export default App

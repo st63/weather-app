@@ -1,0 +1,10 @@
+{
+  "extends": "standard",
+  "rules": {
+    //добавил это правило из-за бага, который возникает из-за несоответсвия версий. Моя версия typescript 4.2.4, поддерживаемая ESLint 4.2.0 
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ]
+  }
+}

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-export const PageContainer = styled.div`
+export const WeatherSelectBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  @media ${'(max-width: 1470px)'} {
+  @media ${'(max-width: 480px)'} {
     flex-direction: column;
   }
 `

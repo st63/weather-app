@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const StyledInput = styled.input`
+export const Input = styled.input`
   width: 48%;
   max-width: 100%;
   height: 41px;
@@ -24,5 +24,9 @@ export const StyledInput = styled.input`
   &:focus::placeholder {
     opacity: 0;
     transition: opacity 0.4s ease;
+  }
+  @media ${'(max-width: 480px)'} {
+    width: 100%;
+    margin-bottom: 55px;
   }
 `

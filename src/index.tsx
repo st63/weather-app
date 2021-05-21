@@ -1,7 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { Provider } from 'react-redux'
+import { store } from './redux/store'
+import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
   * {
@@ -13,23 +15,12 @@ const Global = createGlobalStyle`
     line-height: 24px;
     font-family: Arial, Helvetica, sans-serif;
   }
-`;
-
-const theme = {
-  media: {
-    largeDesktops: '(max-width: 1470px)',
-    mediumDesktops: '(max-width: 1199px)',
-    smallDesctops: '(max-width: 991px)',
-    tablets: '(max-width: 767px)',
-    phones: ('max-width: 480px'),
-  }
-};
+`
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <Provider store={store}>
     <Global />
     <App />
-  </ThemeProvider>,
+  </Provider>,
   document.getElementById('root')
-);
-
+)

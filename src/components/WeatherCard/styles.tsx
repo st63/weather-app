@@ -1,12 +1,15 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-export const StyledWeatherCard = styled.div`
+export const WeatherCardInner = styled.div`
   background-color: rgba(204,204,204,0.2);
   border-radius: .5em;
-  width: 180px;
+  width: 127px;
   margin: 0 auto;
   padding: 10px 14px 0px 14px;
   text-align: center;
+  @media ${'(max-width: 1470px)'} {
+    width: 180px;
+  }
 `
 
 export const Date = styled.div`
