@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 export const WeatherContentWrapper = styled.div`
   display: flex;
-  overflow-y: hidden;
+  @media ${'(max-width: 359px)'} {
+    overflow-y: hidden;
+  }
 `
 
 export const ArrowControlLeft = styled.button`
