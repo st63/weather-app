@@ -15,6 +15,10 @@ export const WeatherBlock = styled.div`
     padding: 32px 54px 60px 54px;
     height: auto;
   }
+  @media ${'(max-width: 359px)'} {
+    padding: 32px 24px 60px 24px;
+    margin-bottom: 10px;
+  }
 `
 
 export const WeatherTitle = styled.h1`

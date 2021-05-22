@@ -7,7 +7,7 @@ export const GET_WEATHER = 'GET_WEATHER'
 export const CHANGE_WEATHER_TO_DISPLAY = 'CHANGE_WEATHER_TO_DISPLAY'
 export const GET_WEATHER_OF_DAY = 'GET_WEATHER_OF_DAY'
 
-export const thunkGetWeather = (city: string, isMobile: boolean) => (dispatch: Dispatch<ActionsTypes>, getState: () => AppStateType) => {
+export const thunkGetWeather = (city: string, isTablet: boolean, isMobile: boolean) => (dispatch: Dispatch<ActionsTypes>, getState: () => AppStateType) => {
   getWeather(city).then(res => {
     const weatherForSevenDays: Array<IWeatherToDisplay> = []
 
@@ -23,12 +23,16 @@ export const thunkGetWeather = (city: string, isMobile: boolean) => (dispatch: D
 
     let weatherToDisplay: Array<IWeatherToDisplay> = []
 
-    if (!isMobile) {
+    if (!isTablet) {
       weatherToDisplay = weatherForSevenDays.filter((item: IWeatherToDisplay, index: number) => index < 3)
     }
 
-    if (isMobile) {
+    if (isTablet) {
       weatherToDisplay = [weatherForSevenDays[0]]
+    }
+
+    if (isMobile) {
+      weatherToDisplay = weatherForSevenDays
     }
 
     dispatch(getWeatherAC({ weatherForSevenDays, weatherToDisplay }))

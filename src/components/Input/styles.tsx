@@ -14,7 +14,6 @@ export const Input = styled.input`
   padding: 14px 9px 13px 15px;
   background: rgba(128, 131, 164, 0.06);
   &:hover {
-    cursor: pointer;
     border: 2px solid #8083A4;
   }
   &:active {

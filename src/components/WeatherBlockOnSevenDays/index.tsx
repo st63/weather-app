@@ -10,17 +10,18 @@ import { IWeatherBlockOnSevenDays, IWeatherToDisplay } from '../../types'
 import { AppStateType } from '../../redux/store'
 import placeholderIcon from '../../images/placeholder-icon.svg'
 
-const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSevenDays, weatherToDisplay, thunkGetWeather, changeWeatherToDisplayAC }) => {
+const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSevenDays, weatherToDisplay, thunkGetWeather, changeWeatherToDisplayAC, isWeatherLoadedFor7Days }) => {
   const [position, setPosition] = useState<number>(0)
   const [city, setCity] = useState<string | undefined>()
-  const isMobile: boolean = useMediaQuery('(max-width: 730px)')
+  const isTablet: boolean = useMediaQuery('(max-width: 730px) and (min-width: 360px)')
+  const isMobile: boolean = useMediaQuery('(max-width: 359px)')
 
   useEffect(() => {
     if (city) {
-      thunkGetWeather(city, isMobile)
+      thunkGetWeather(city, isTablet, isMobile)
       setPosition(0)
     }
-  }, [city, isMobile]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [city, isTablet, isMobile]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     changeDisplayWeather()
@@ -29,11 +30,11 @@ const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSeven
   const changeDisplayWeather = (): void => {
     let weatherToDisplay: Array<IWeatherToDisplay> = []
 
-    if (!isMobile) {
+    if (!isTablet) {
       weatherToDisplay = weatherForSevenDays.filter((item: object, index: number) => index >= position && index < position + 3)
     }
 
-    if (isMobile) {
+    if (isTablet) {
       weatherToDisplay = [weatherForSevenDays[position]]
     }
 
@@ -52,24 +53,24 @@ const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSeven
     setCity(event.target.value)
   }
 
-  const disabledBtnOnDesctop: boolean = position === 5 && !isMobile
-  const disabledBtnOnMobile: boolean = position === 7 && isMobile
+  const disabledBtnOnDesctop: boolean = position === 5 && !isTablet
+  const disabledBtnOnMobile: boolean = position === 7 && isTablet
   const isCitySelected: boolean = city !== undefined
 
   return (
     <WeatherBlock>
       <WeatherTitle>7 Days Forecast</WeatherTitle>
       <CitySelect city={city} selectCity={selectCity} isCitySelected={isCitySelected} />
-      {!city
-        ? <EmptyWeatherBlock>
+      {isWeatherLoadedFor7Days
+        ? <WeatherContentWrapper>
+            <ArrowControlLeft disabled={position === 0} onClick={reducePosition} />
+            {weatherToDisplay.map((day: IWeatherToDisplay, index: number) => <WeatherCard key={index} date={day?.date} temp={day?.temp} icon={day?.icon} heightIcon={'115px'} width={'174px'} />)}
+            <ArrowControlRight disabled={disabledBtnOnDesctop || disabledBtnOnMobile} onClick={increasePosition} />
+        </WeatherContentWrapper>
+        : <EmptyWeatherBlock>
           <EmptyWeatherIcon src={placeholderIcon}></EmptyWeatherIcon>
           <EmptyWeatherPlaceholder>Fill in all the fields and the weather will be displayed</EmptyWeatherPlaceholder>
         </EmptyWeatherBlock>
-        : <WeatherContentWrapper>
-          <ArrowControlLeft disabled={position === 0} onClick={reducePosition} />
-          {weatherToDisplay.map((day: IWeatherToDisplay, index: number) => <WeatherCard key={index} date={day?.date} temp={day?.temp} icon={day?.icon} heightIcon={'115px'} width={'174px'} />)}
-          <ArrowControlRight disabled={disabledBtnOnDesctop || disabledBtnOnMobile} onClick={increasePosition} />
-        </WeatherContentWrapper>
       }
     </WeatherBlock>
   )
@@ -77,7 +78,8 @@ const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSeven
 
 const mapStateToProps = (state: AppStateType) => ({
   weatherForSevenDays: state.mainPage.weatherForSevenDays,
-  weatherToDisplay: state.mainPage.weatherToDisplay
+  weatherToDisplay: state.mainPage.weatherToDisplay,
+  isWeatherLoadedFor7Days: state.mainPage.isWeatherLoadedFor7Days
 })
 
 export default connect(mapStateToProps, { thunkGetWeather, changeWeatherToDisplayAC })(WeatherBlockOnSevenDays)

@@ -20,18 +20,22 @@ export interface IMainPageState {
   weatherForSevenDays: Array<IWeatherToDisplay>
   weatherToDisplay: Array<IWeatherToDisplay>
   weatherOfDay: IWeatherOfDay
+  isWeatherLoadedFor7Days: boolean,
+  isWeatherLoadedOfDay: boolean
 }
 
 export interface IWeatherBlockOnSevenDays {
   weatherForSevenDays: Array<IWeatherToDisplay>
   weatherToDisplay: Array<IWeatherToDisplay>
-  thunkGetWeather(city: string, isMobile: boolean): void
+  thunkGetWeather(city: string, isTablet: boolean, isMobile: boolean): void
   changeWeatherToDisplayAC(weatherToDisplay: Array<IWeatherToDisplay>): void
+  isWeatherLoadedFor7Days: boolean
 }
 
 export interface IWeatherBlockOfThePast {
   weatherOfDay: IWeatherOfDay
   thunkGetWeatherOfDay(city: string | undefined, date: string): void
+  isWeatherLoadedOfDay: boolean
 }
 
 export interface IWeatherCard {

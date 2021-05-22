@@ -15,10 +15,15 @@ export const WeatherCardInner = styled.div<{ width: string }>`
     width: 100%;
     margin: 30px 0px 0px 0px;
   }
+  @media ${'(max-width: 359px)'} {
+    border: 2px solid #2C2D76;
+    margin-right: 16px;
+  }
 `
 
 export const Date = styled.div`
   font-weight: 700;
+  text-transform: lowercase;
 `
 
 export const Icon = styled.img<{ heightIcon: string }>`

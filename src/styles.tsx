@@ -16,9 +16,14 @@ export const Container = styled.div`
   }
   @media ${'(max-width: 1280px)'} {
     width: 100%;
+    background-size: 1280px;
   }
   @media ${'(max-width: 730px)'} {
     padding: 32px 10px 16px 10px;
+    background-size: 730px;
+  }
+  @media ${'(max-width: 320px)'} {
+    background-size: 580px;
   }
 `
 

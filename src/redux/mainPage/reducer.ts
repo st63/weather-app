@@ -4,7 +4,9 @@ import { IMainPageState, IWeatherOfDay, IWeatherToDisplay } from '../../types'
 const defaultState = {
   weatherForSevenDays: [] as Array<IWeatherToDisplay>,
   weatherToDisplay: [] as Array<IWeatherToDisplay>,
-  weatherOfDay: {} as IWeatherOfDay
+  weatherOfDay: {} as IWeatherOfDay,
+  isWeatherLoadedFor7Days: false,
+  isWeatherLoadedOfDay: false
 }
 
 export function mainPageReducer (state: IMainPageState = defaultState, action: any): IMainPageState {
@@ -13,7 +15,8 @@ export function mainPageReducer (state: IMainPageState = defaultState, action: a
       state = {
         ...state,
         weatherForSevenDays: action.weatherForSevenDays,
-        weatherToDisplay: action.weatherToDisplay
+        weatherToDisplay: action.weatherToDisplay,
+        isWeatherLoadedFor7Days: true
       }
       break
 
@@ -30,7 +33,8 @@ export function mainPageReducer (state: IMainPageState = defaultState, action: a
         weatherOfDay: {
           temp: action.temp,
           icon: action.icon
-        }
+        },
+        isWeatherLoadedOfDay: true
       }
       break
   }

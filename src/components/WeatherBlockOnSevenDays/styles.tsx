@@ -2,11 +2,12 @@ import styled from 'styled-components'
 
 export const WeatherContentWrapper = styled.div`
   display: flex;
+  overflow-y: hidden;
 `
 
 export const ArrowControlLeft = styled.button`
   position: relative;
-  top: -7px;
+  top: 21px;
   left: -33px;
   border: none;
   outline: none;
@@ -29,7 +30,7 @@ export const ArrowControlLeft = styled.button`
 
 export const ArrowControlRight = styled.button`
   position: relative;
-  top: -7px;
+  top: 21px;
   right: 1px;
   border: none;
   outline: none;
