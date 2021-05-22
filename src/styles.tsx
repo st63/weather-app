@@ -1,31 +1,25 @@
 import styled from 'styled-components'
-import background from './images/background.jpg'
+import backgroundBottom from './images/background-bottom.png'
+import backgroundTop from './images/background-top.png'
 
 export const Container = styled.div`
-  padding: 40px 15px;
-  height: 100vh;
+  padding: 84px 43px 16px 43px;
   margin: 0 auto;
-  width: 1140px;
-  @media ${'(max-width: 1200px)'} {
-    width: 960px;
+  width: 1440px;
+  background-color: #373AF5;
+  background-image: url(${backgroundBottom}), url(${backgroundTop});
+  background-position: 0% 100%,100% 0%;
+  background-size: 1440px;
+  background-repeat: no-repeat,no-repeat;
+  @media ${'(max-width: 1440px)'} {
+    width: 1280px;
   }
-  @media ${'(max-width: 992px)'} {
-    width: 720px;
+  @media ${'(max-width: 1280px)'} {
+    width: 100%;
   }
-  @media ${'(max-width: 768px)'} {
-    width: 540px;
+  @media ${'(max-width: 730px)'} {
+    padding: 32px 10px 16px 10px;
   }
-  @media ${'(max-width: 576px)'} {
-    width: auto;
-  }
-`
-
-export const Background = styled.div`
-  background: url(${background}),rgba(255,255,255,0.3);
-  background-blend-mode: color;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
 `
 
 export const Flex = styled.div`

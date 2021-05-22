@@ -1,32 +1,27 @@
 import styled from 'styled-components'
 
 export const Input = styled.input`
-  width: 48%;
+  width: 251px;
   max-width: 100%;
-  height: 41px;
-  border: 1px solid #aaa;
-  border-radius: .5em;
+  height: 48px;
+  margin-right: 5px;
+  border: 2px solid rgba(128, 131, 164, 0.2);
+  border-radius: 8px;
   outline: none;
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
-  padding: .5em 1.4em .3em 1em;
-  border: 1px solid #cecece;
-  background-color: rgba(204,204,204,0.2);
-  border-radius: .5em;
-  transition: background-color 0.7s ease;
+  color:#8083A4;
+  padding: 14px 9px 13px 15px;
+  background: rgba(128, 131, 164, 0.06);
   &:hover {
-    background-color: rgba(204,204,204,0.5);
+    cursor: pointer;
+    border: 2px solid #8083A4;
   }
-  &::placeholder {
-    color: #fff;
+  &:active {
+    border: 2px solid #373AF5;
   }
-  &:focus::placeholder {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  @media ${'(max-width: 480px)'} {
+  @media ${'(max-width: 730px)'} {
     width: 100%;
-    margin-bottom: 55px;
+    margin-top: 24px;
   }
 `

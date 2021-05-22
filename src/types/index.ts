@@ -34,9 +34,18 @@ export interface IWeatherBlockOfThePast {
   thunkGetWeatherOfDay(city: string | undefined, date: string): void
 }
 
+export interface IWeatherCard {
+  date: number | string
+  temp: number
+  icon: string
+  width: string
+  heightIcon: string,
+}
+
 export interface ICitySelect {
   city: string | undefined
   selectCity(event: React.ChangeEvent<HTMLSelectElement>): void
+  isCitySelected: boolean
 }
 
 export interface IDateInput {

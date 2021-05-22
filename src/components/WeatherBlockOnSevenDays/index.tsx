@@ -3,16 +3,17 @@ import { connect } from 'react-redux'
 import { useMediaQuery } from 'beautiful-react-hooks'
 import { CitySelect } from '../CitySelect'
 import { WeatherCard } from '../WeatherCard'
-import { WeatherBlock, WeatherTitle } from '../styles'
+import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from '../styles'
 import { WeatherContentWrapper, ArrowControlLeft, ArrowControlRight } from './styles'
 import { thunkGetWeather, changeWeatherToDisplayAC } from '../../redux/mainPage/actions'
 import { IWeatherBlockOnSevenDays, IWeatherToDisplay } from '../../types'
 import { AppStateType } from '../../redux/store'
+import placeholderIcon from '../../images/placeholder-icon.svg'
 
 const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSevenDays, weatherToDisplay, thunkGetWeather, changeWeatherToDisplayAC }) => {
   const [position, setPosition] = useState<number>(0)
   const [city, setCity] = useState<string | undefined>()
-  const isMobile: boolean = useMediaQuery('(max-width: 768px)')
+  const isMobile: boolean = useMediaQuery('(max-width: 730px)')
 
   useEffect(() => {
     if (city) {
@@ -53,16 +54,20 @@ const WeatherBlockOnSevenDays: FC<IWeatherBlockOnSevenDays> = ({ weatherForSeven
 
   const disabledBtnOnDesctop: boolean = position === 5 && !isMobile
   const disabledBtnOnMobile: boolean = position === 7 && isMobile
+  const isCitySelected: boolean = city !== undefined
 
   return (
     <WeatherBlock>
-      <WeatherTitle>Прогноз погоды на 7 дней:</WeatherTitle>
-      <CitySelect city={city} selectCity={selectCity} />
+      <WeatherTitle>7 Days Forecast</WeatherTitle>
+      <CitySelect city={city} selectCity={selectCity} isCitySelected={isCitySelected} />
       {!city
-        ? <div>Fill in all the fields and the weather will be displayed</div>
+        ? <EmptyWeatherBlock>
+          <EmptyWeatherIcon src={placeholderIcon}></EmptyWeatherIcon>
+          <EmptyWeatherPlaceholder>Fill in all the fields and the weather will be displayed</EmptyWeatherPlaceholder>
+        </EmptyWeatherBlock>
         : <WeatherContentWrapper>
           <ArrowControlLeft disabled={position === 0} onClick={reducePosition} />
-          {weatherToDisplay.map((day: IWeatherToDisplay, index: number) => <WeatherCard key={index} date={day.date} temp={day.temp} icon={day.icon} />)}
+          {weatherToDisplay.map((day: IWeatherToDisplay, index: number) => <WeatherCard key={index} date={day?.date} temp={day?.temp} icon={day?.icon} heightIcon={'115px'} width={'174px'} />)}
           <ArrowControlRight disabled={disabledBtnOnDesctop || disabledBtnOnMobile} onClick={increasePosition} />
         </WeatherContentWrapper>
       }

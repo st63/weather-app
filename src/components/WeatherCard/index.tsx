@@ -1,16 +1,15 @@
 import React, { FC } from 'react'
 import Moment from 'react-moment'
 import 'moment-timezone'
-import 'moment/locale/ru'
 import { WeatherCardInner, Date, Degrees, Icon } from './styles'
-import { IWeatherToDisplay } from '../../types'
+import { IWeatherCard } from '../../types'
 
-export const WeatherCard: FC<IWeatherToDisplay> = ({ date, temp, icon }) => {
+export const WeatherCard: FC<IWeatherCard> = ({ date, temp, icon, width, heightIcon }) => {
   return (
-    <WeatherCardInner>
-      <Date><Moment unix format="D MMM YYYY" locale="ru">{date}</Moment></Date>
-      <Degrees>{temp}°C</Degrees>
-      <Icon src={`http://openweathermap.org/img/wn/${icon}.png`} />
+    <WeatherCardInner width={width}>
+      <Date><Moment unix format="D MMM YYYY">{date}</Moment></Date>
+      <Icon heightIcon={heightIcon} src={`http://openweathermap.org/img/wn/${icon}.png`} />
+      <Degrees>+{temp}°</Degrees>
     </WeatherCardInner>
   )
 }

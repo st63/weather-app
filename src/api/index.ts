@@ -7,7 +7,7 @@ export const getWeather = async (city: string) => {
 }
 
 export const getWeatherOfDay = async (city: string, date: string) => {
-  const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/onecall/timemachine?${city}&dt=${date}&units=metric&appid=04160438ae6d577745ad287cda3d9bca`)
+  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall/timemachine?${city}&dt=${date}&units=metric&appid=04160438ae6d577745ad287cda3d9bca`)
 
   return data.current
 }
