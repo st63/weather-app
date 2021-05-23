@@ -1,69 +1,13 @@
-import React, { FC, useState, useEffect } from 'react'
-import { useMediaQuery } from 'beautiful-react-hooks'
+import { FC } from 'react'
 import { CitySelect } from '../../CitySelect'
 import { WeatherCard } from '../../WeatherCard'
 import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from '../styles'
 import { WeatherContentWrapper, ArrowControlLeft, ArrowControlRight } from './styles'
 import placeholderIcon from '../../../images/placeholder-icon.svg'
 
-import { useWeatherFields } from './hooks'
-import { Weather, getWeather } from '../../../api'
-
-const useWeatherList = () => {
-  const [weathers, saveWeathers] = useState<Weather[]>()
-  const { city, selectCity } = useWeatherFields()
-
-  useEffect(() => {
-    if (city) {
-      getWeather(city).then(saveWeathers)
-    }
-  }, [city])
-
-  return { weathers, city, selectCity }
-}
+import { useWeatherList, usePagination } from './hooks'
 
 const renderWeather = (day: IWeatherToDisplay) => <WeatherCard key={day.date} date={day.date} weather={day} heightIcon="115px" width="174px" />
-
-const PAGE_SIZE_BY_DEVICE = {
-  COMMON: 3,
-  MOBILE: 7
-}
-
-const usePagination = (weathers?: Weather[]) => {
-  const isCommon: boolean = useMediaQuery('(min-width: 706px)')
-  const isMobile: boolean = useMediaQuery('(max-width: 705px)')
-
-  const [position, updatePosition] = useState(0)
-  const [pageSize, updatePageSize] = useState(PAGE_SIZE_BY_DEVICE.COMMON)
-
-  const next = () => {
-    updatePosition(position + 1)
-  }
-
-  const prev = () => {
-    updatePosition(position - 1)
-  }
-
-  useEffect(() => {
-    if (isMobile) {
-      updatePageSize(PAGE_SIZE_BY_DEVICE.MOBILE)
-    }
-
-    if (isCommon) {
-      updatePageSize(PAGE_SIZE_BY_DEVICE.COMMON)
-    }
-  }, [isCommon, isMobile])
-
-  const list = weathers ? weathers.slice(position, position + pageSize) : []
-
-  return {
-    position,
-    next,
-    prev,
-    list,
-    pageSize
-  }
-}
 
 export const WeatherBlockOnSevenDays: FC = () => {
   const { city, selectCity, weathers } = useWeatherList()

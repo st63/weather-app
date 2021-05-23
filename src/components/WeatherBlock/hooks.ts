@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
 
-import { saveWeather, saveWeathers } from '../../redux/weather/actions'
-import { getWeatherOfDay, getWeather } from '../../api'
+export const useWeatherFields = () => {
+  const [city, setCity] = useState<string>()
+  const selectCity = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    setCity(event.target.value)
+  }
 
-export const useWeatherOfDayApi = (city?: string, date?: string, cached?: boolean) => {
-  const dispatch = useDispatch()
+  const [date, setDate] = useState<string>()
+  const selectDate = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setDate(event.target.value)
+  }
 
-  useEffect(() => {
-    if (city && date && !cached) {
-      getWeatherOfDay(city, date).then(d => dispatch(saveWeather(d)))
-    }
-  }, [city, date])
+  return {
+    city,
+    selectCity,
+    date,
+    selectDate
+  }
 }
 
-export const useWeatherListApi = (city?: string) => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    if (city) {
-      getWeather(city).then(d => dispatch(saveWeathers(d)))
-    }
-  }, [city])
-}
 

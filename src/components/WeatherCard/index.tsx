@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { WeatherCardInner, Date, Degrees, Icon } from './styles'
 
 export const WeatherCard: FC<IWeatherCard> = ({ date, weather, width, heightIcon }) => {
