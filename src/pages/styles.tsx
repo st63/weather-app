@@ -16,7 +16,7 @@ export const PageTitle = styled.header`
   }
 `
 
-export const PageTitleWord = styled.h1<{ lineHeight: string, textAlign: string }>`
+export const PageTitleWord = styled.h1 < { lineHeight: string, textAlign: string } > `
   font-weight: bold;
   font-size: 102px;
   line-height: ${props => props.lineHeight};

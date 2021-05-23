@@ -1,5 +1,22 @@
 import React from 'react'
 
+export type CurrentWeather = any
+
+export type DailyWeather = CurrentWeather & any
+type WeatherList = DailyWeather[]
+
+export type WeatherListResponse = {
+  data: {
+    daily: WeatherList
+  }
+}
+
+export type CurrentWeatherResponse = {
+  data: {
+    current: CurrentWeather
+  }
+}
+
 export interface IWeatherToDisplay {
   date: number | string
   temp: number

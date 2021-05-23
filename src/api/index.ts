@@ -1,23 +1,7 @@
 import axios from 'axios'
 import { APP_ID } from '../config'
 import { formatDateDailyWeather } from '../utils'
-
-type CurrentWeather = any
-
-type DailyWeather = CurrentWeather & any
-type WeatherList = DailyWeather[]
-
-type WeatherListResponse = {
-  data: {
-    daily: WeatherList
-  }
-}
-
-type CurrentWeatherResponse = {
-  data: {
-    current: CurrentWeather
-  }
-}
+import { CurrentWeather, WeatherListResponse, CurrentWeatherResponse } from '../types'
 
 export type Weather = {
   date: string

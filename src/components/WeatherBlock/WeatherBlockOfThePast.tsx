@@ -1,5 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { FC } from 'react'
 
 import { DateInput } from '../Input'
 import { CitySelect } from '../CitySelect'
@@ -7,7 +6,7 @@ import { WeatherCard } from '../WeatherCard'
 import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from './styles'
 import { WeatherSelectBlock } from './WeatherBlockOfThePast/styles'
 import placeholderIcon from '../../images/placeholder-icon.svg'
-import {formatDateDisplay} from '../../utils'
+import { formatDateDisplay } from '../../utils'
 
 import { useWeatherByDate } from './hooks'
 
@@ -30,13 +29,13 @@ export const WeatherBlockOfThePast: FC = () => {
             heightIcon="146px"
             width="98.5%"
           />
-        )
+          )
         : (
           <EmptyWeatherBlock>
             <EmptyWeatherIcon src={placeholderIcon} />
             <EmptyWeatherPlaceholder>Fill in all the fields and the weather will be displayed</EmptyWeatherPlaceholder>
           </EmptyWeatherBlock>
-        )
+          )
       }
     </WeatherBlock>
   )

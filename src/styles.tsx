@@ -10,8 +10,11 @@ export const AppBody = styled.div`
 
 export const Container = styled.div`
   margin: 0 auto;
-  padding-top: 84px;
+  padding: 84px 43px 16px 43px;
   max-width: 1440px;
+  @media ${'(max-width: 730px)'} {
+    padding-top: 32px;
+  }
 `
 
 export const Flex = styled.div`

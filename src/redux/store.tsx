@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import { weatherReducer } from './weather/reducer'
 
 const reducers = combineReducers({
-  weather: weatherReducer,
+  weather: weatherReducer
 })
 
 type ReducersType = typeof reducers

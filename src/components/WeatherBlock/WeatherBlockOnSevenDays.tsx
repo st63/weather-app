@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect } from 'react'
-import { connect } from 'react-redux'
 import { useMediaQuery } from 'beautiful-react-hooks'
 import { CitySelect } from '../CitySelect'
 import { WeatherCard } from '../WeatherCard'
@@ -27,16 +26,16 @@ const useWeatherList = () => {
 const renderWeather = (day: IWeatherToDisplay) => <WeatherCard key={day.date} date={day.date} weather={day} heightIcon="115px" width="174px" />
 
 const PAGE_SIZE_BY_DEVICE = {
-  TABLET: 3,
-  MOBILE: 7,
+  COMMON: 3,
+  MOBILE: 7
 }
 
 const usePagination = (weathers?: Weather[]) => {
-  const isTablet: boolean = useMediaQuery('(max-width: 730px) and (min-width: 640px)')
-  const isMobile: boolean = useMediaQuery('(max-width: 640px)')
+  const isCommon: boolean = useMediaQuery('(min-width: 706px)')
+  const isMobile: boolean = useMediaQuery('(max-width: 705px)')
 
   const [position, updatePosition] = useState(0)
-  const [pageSize, updatePageSize] = useState(PAGE_SIZE_BY_DEVICE.TABLET)
+  const [pageSize, updatePageSize] = useState(PAGE_SIZE_BY_DEVICE.COMMON)
 
   const next = () => {
     updatePosition(position + 1)
@@ -51,10 +50,10 @@ const usePagination = (weathers?: Weather[]) => {
       updatePageSize(PAGE_SIZE_BY_DEVICE.MOBILE)
     }
 
-    if (isTablet) {
-      updatePageSize(PAGE_SIZE_BY_DEVICE.TABLET)
+    if (isCommon) {
+      updatePageSize(PAGE_SIZE_BY_DEVICE.COMMON)
     }
-  }, [isTablet, isMobile])
+  }, [isCommon, isMobile])
 
   const list = weathers ? weathers.slice(position, position + pageSize) : []
 
@@ -63,7 +62,7 @@ const usePagination = (weathers?: Weather[]) => {
     next,
     prev,
     list,
-    pageSize,
+    pageSize
   }
 }
 
@@ -82,13 +81,13 @@ export const WeatherBlockOnSevenDays: FC = () => {
             {list.map(renderWeather)}
             <ArrowControlRight disabled={position === weathers.length - pageSize} onClick={next} />
           </WeatherContentWrapper>
-        )
+          )
         : (
           <EmptyWeatherBlock>
             <EmptyWeatherIcon src={placeholderIcon}></EmptyWeatherIcon>
             <EmptyWeatherPlaceholder>Fill in all the fields and the weather will be displayed</EmptyWeatherPlaceholder>
           </EmptyWeatherBlock>
-        )
+          )
       }
     </WeatherBlock>
   )
