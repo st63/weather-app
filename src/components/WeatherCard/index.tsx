@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { WeatherCardInner, Date, Degrees, Icon } from './styles'
-import { IWeatherCard } from '../../types'
 
 export const WeatherCard: FC<IWeatherCard> = ({ date, weather, width, heightIcon }) => {
   const sign: string = (weather.temp > 0) ? '+' : ''

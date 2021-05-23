@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface IWeatherToDisplay {
   date: number | string
   temp: number

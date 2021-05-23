@@ -1,6 +1,5 @@
 import React from 'react'
 import { Input } from './styles'
-import { IDateInput } from '../../types'
 import { formatDate } from '../../utils'
 
 export const DateInput: React.FC<IDateInput> = ({ date, selectDate }) => {
