@@ -39,19 +39,21 @@ export interface IWeatherBlockOfThePast {
 }
 
 export interface IWeatherCard {
-  date: number | string
-  temp: number
-  icon: string
+  date?: number | string
+  weather: {
+    temp: number
+    icon: string
+  }
   width: string
   heightIcon: string,
 }
 
 export interface ICitySelect {
-  city: string | undefined
+  city?: string
   selectCity(event: React.ChangeEvent<HTMLSelectElement>): void
-  isCitySelected: boolean
 }
 
 export interface IDateInput {
+  date?: string
   selectDate(event: React.ChangeEvent<HTMLInputElement>): void
 }

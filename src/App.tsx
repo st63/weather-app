@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 import { MainPage } from './pages/MainPage'
-import { Container } from './styles'
+import { Container, AppBody } from './styles'
 
 const App: FC = () => {
   return (
+    <AppBody>
       <Container>
         <MainPage />
-    </Container>
+      </Container>
+    </AppBody>
   )
 }
 

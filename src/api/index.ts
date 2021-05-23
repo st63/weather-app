@@ -1,13 +1,62 @@
 import axios from 'axios'
+import { APP_ID } from '../config'
+import { formatDateDailyWeather } from '../utils'
 
-export const getWeather = async (city: string) => {
-  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?${city}&exclude=current,minutely,hourly,alerts&units=metric&appid=04160438ae6d577745ad287cda3d9bca`)
+type CurrentWeather = any
 
-  return data.daily
+type DailyWeather = CurrentWeather & any
+type WeatherList = DailyWeather[]
+
+type WeatherListResponse = {
+  data: {
+    daily: WeatherList
+  }
 }
 
-export const getWeatherOfDay = async (city: string, date: string) => {
-  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall/timemachine?${city}&dt=${date}&units=metric&appid=04160438ae6d577745ad287cda3d9bca`)
+type CurrentWeatherResponse = {
+  data: {
+    current: CurrentWeather
+  }
+}
 
-  return data.current
+export type Weather = {
+  date: string
+  temp: number
+  icon: string
+}
+
+export type WeatherData = {
+  city: string
+  date: string
+  weather: Weather
+}
+
+const mapDailyWeather = (day: CurrentWeather): Weather => ({
+  date: formatDateDailyWeather(day.dt), 
+  temp: Math.round(day.temp.day),
+  icon: day.weather[0].icon
+})
+
+export const getWeather = async (city: string): Promise<Weather[]> => {
+  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?${city}&exclude=current,minutely,hourly,alerts&units=metric&appid=${APP_ID}`) as WeatherListResponse
+
+  return data.daily.map(mapDailyWeather)
+}
+
+const mapWeather = (day: CurrentWeather): Weather => ({
+  date: day.dt,
+  temp: Math.round(day.temp),
+  icon: day.weather[0].icon
+})
+
+export const getWeatherOfDay = async (city: string, date: string): Promise<WeatherData> => {
+  // @ts-ignore
+  const formattedDay: number = new Date(date) / 1000
+  const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/onecall/timemachine?${city}&dt=${formattedDay}&units=metric&appid=${APP_ID}`) as CurrentWeatherResponse
+
+  return {
+    city,
+    date,
+    weather: mapWeather(data.current),
+  }
 }

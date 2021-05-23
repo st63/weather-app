@@ -1,12 +1,21 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { mainPageReducer } from './mainPage/reducer'
+import { weatherReducer } from './weather/reducer'
 
 const reducers = combineReducers({
-  mainPage: mainPageReducer
+  weather: weatherReducer,
 })
 
 type ReducersType = typeof reducers
 export type AppStateType = ReturnType<ReducersType>
 
-export const store = createStore(reducers, applyMiddleware(thunkMiddleware))
+let enhancer = applyMiddleware(thunkMiddleware)
+
+const isDebug = process.env.NODE_ENV === 'development'
+// @ts-ignore
+if (isDebug && window.__REDUX_DEVTOOLS_EXTENSION__) {
+  // @ts-ignore
+  enhancer = compose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__())
+}
+
+export const store = createStore(reducers, enhancer)

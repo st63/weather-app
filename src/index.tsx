@@ -6,8 +6,6 @@ import { store } from './redux/store'
 import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
-
   * {
     margin: 0;
     padding: 0;

@@ -1,20 +1,30 @@
 import React from 'react'
-import WeatherBlockOnSevenDays from '../../components/WeatherBlockOnSevenDays'
-import WeatherBlockOfThePast from '../../components/WeatherBlockOfThePast'
-import { PageContainer, PageTitle, PageTitleWord, WeatherBlocksWrapper, PageFooter } from './styles'
+import styled from 'styled-components'
 
-export const MainPage = () => {
-  return (
-    <PageContainer>
-      <PageTitle>
-        <PageTitleWord lineHeight={'83px'} textAlign={'left'}>Weather</PageTitleWord>
-        <PageTitleWord lineHeight={'97px'} textAlign={'right'}>forecast</PageTitleWord>
-      </PageTitle>
-      <WeatherBlocksWrapper>
-        <WeatherBlockOnSevenDays />
-        <WeatherBlockOfThePast />
-      </WeatherBlocksWrapper>
-      <PageFooter>C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</PageFooter>
-    </PageContainer>
-  )
-}
+import { WeatherBlockOnSevenDays } from '../../components/WeatherBlock/WeatherBlockOnSevenDays'
+import { WeatherBlockOfThePast } from '../../components/WeatherBlock/WeatherBlockOfThePast'
+import { PageContainer, PageTitle, PageTitleWord, PageFooter } from '../styles'
+
+const WeathersBlocks = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  @media ${'(max-width: 1470px)'} {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+export const MainPage = () => (
+  <PageContainer>
+    <PageTitle>
+      <PageTitleWord lineHeight="83px" textAlign="left">Weather</PageTitleWord>
+      <PageTitleWord lineHeight="97px" textAlign="right">forecast</PageTitleWord>
+    </PageTitle>
+    <WeathersBlocks>
+      <WeatherBlockOnSevenDays />
+      <WeatherBlockOfThePast />
+    </WeathersBlocks>
+    <PageFooter>C ЛЮБОВЬЮ ОТ MERCURY DEVELOPMENT</PageFooter>
+  </PageContainer>
+)

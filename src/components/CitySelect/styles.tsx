@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Select = styled.select<{ isCitySelected: boolean }>`
+export const Select = styled.select < { isCitySelected: boolean } > `
   display: block;
   color: ${({ isCitySelected }) => isCitySelected ? '#2C2D76' : '#8083A4'};
   font-size: 16px;
@@ -15,13 +15,16 @@ export const Select = styled.select<{ isCitySelected: boolean }>`
   background: rgba(128, 131, 164, 0.06);
   transition: background-color 0.7s ease;
   position: relative;
+
   &:hover {
     cursor: pointer;
     border: 2px solid #8083A4;
   }
+
   &:active {
     border: 2px solid #373AF5;
   }
+
   @media ${'(max-width: 730px)'} {
     margin-left: 0px;
     width: 100%;

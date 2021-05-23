@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const WeatherContentWrapper = styled.div`
   display: flex;
-  @media ${'(max-width: 359px)'} {
+
+  @media ${'(max-width: 640px)'} {
     overflow-y: hidden;
   }
 `
@@ -14,10 +15,12 @@ export const ArrowControlLeft = styled.button`
   border: none;
   outline: none;
   opacity: 0.6;
+
   &:hover {
       cursor: pointer;
       opacity: 1;
   }
+
   &:after {
     content: '';
     position: absolute;
@@ -37,10 +40,12 @@ export const ArrowControlRight = styled.button`
   border: none;
   outline: none;
   opacity: 0.6;
+
   &:hover {
       cursor: pointer;
       opacity: 1;
   }
+  
   &:after {
     content: '';
     position: absolute;

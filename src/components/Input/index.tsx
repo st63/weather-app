@@ -1,20 +1,40 @@
 import React from 'react'
-import moment from 'moment'
 import { Input } from './styles'
 import { IDateInput } from '../../types'
+import { formatDate } from '../../utils'
 
-export const DateInput: React.FC<IDateInput> = ({ selectDate }) => {
-  const startOfAllowedDate: string = moment().add(-5, 'd').format('YYYY-MM-DD')
-  const endOfAllowedDate: string = moment().format('YYYY-MM-DD')
+export const DateInput: React.FC<IDateInput> = ({ date, selectDate }) => {
+  const [type, changeType] = React.useState('text')
+
+  const setFieldToDate = () => {
+    if (type !== 'date') {
+      changeType('date')
+    }
+  }
+
+  const setFieldToText = () => {
+    if (!date && type !== 'text') {
+      changeType('text')
+    }
+  }
+
+  const today = new Date()
+
+  const minDate: string = formatDate(new Date(new Date().setDate(today.getDate() - 5)))
+  const maxDate: string = formatDate(today)
 
   return (
     <Input
       onChange={selectDate}
-      onKeyDown={() => false}
-      type="date"
-      min={startOfAllowedDate}
-      max={endOfAllowedDate}
+      onFocus={setFieldToDate}
+      onBlur={setFieldToText}
+      onKeyDown={() => {}}
+      type={type}
+      min={minDate}
+      max={maxDate}
+      value={date}
       placeholder="Select date"
-      required />
+      required
+    />
   )
 }

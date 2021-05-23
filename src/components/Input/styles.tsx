@@ -9,16 +9,24 @@ export const Input = styled.input`
   border-radius: 8px;
   outline: none;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color:#8083A4;
   padding: 14px 9px 13px 15px;
   background: rgba(128, 131, 164, 0.06);
+
   &:hover {
     border: 2px solid #8083A4;
   }
+
   &:active {
     border: 2px solid #373AF5;
   }
+  
+  &::placeholder {
+    color:#8083A4;
+    font-weight: 400;
+  }
+  
   @media ${'(max-width: 730px)'} {
     width: 100%;
     margin-top: 24px;
