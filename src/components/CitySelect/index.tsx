@@ -1,6 +1,6 @@
 import React from 'react'
 import { Select, Option } from './styles'
-import { ICitySelect } from '../../types'
+// import { ICitySelect } from '../../types'
 
 import { CITIES, City } from '../../config'
 

@@ -1,39 +1,22 @@
 import React from 'react'
 
-export type CurrentWeather = any
-
-export type DailyWeather = CurrentWeather & any
-type WeatherList = DailyWeather[]
-
-export type WeatherListResponse = {
-  data: {
-    daily: WeatherList
-  }
-}
-
-export type CurrentWeatherResponse = {
-  data: {
-    current: CurrentWeather
-  }
-}
-
-export interface IWeatherToDisplay {
+interface IWeatherToDisplay {
   date: number | string
   temp: number
   icon: string
 }
 
-export interface IWeather {
+interface IWeather {
   weatherForSevenDays: Array<IWeatherToDisplay>
   weatherToDisplay: Array<IWeatherToDisplay>
 }
 
-export interface IWeatherOfDay {
+interface IWeatherOfDay {
   temp: number
   icon: string
 }
 
-export interface IMainPageState {
+interface IMainPageState {
   weatherForSevenDays: Array<IWeatherToDisplay>
   weatherToDisplay: Array<IWeatherToDisplay>
   weatherOfDay: IWeatherOfDay
@@ -41,7 +24,7 @@ export interface IMainPageState {
   isWeatherLoadedOfDay: boolean
 }
 
-export interface IWeatherBlockOnSevenDays {
+interface IWeatherBlockOnSevenDays {
   weatherForSevenDays: Array<IWeatherToDisplay>
   weatherToDisplay: Array<IWeatherToDisplay>
   thunkGetWeather(city: string, isTablet: boolean, isMobile: boolean): void
@@ -49,13 +32,13 @@ export interface IWeatherBlockOnSevenDays {
   isWeatherLoadedFor7Days: boolean
 }
 
-export interface IWeatherBlockOfThePast {
+interface IWeatherBlockOfThePast {
   weatherOfDay: IWeatherOfDay
   thunkGetWeatherOfDay(city: string | undefined, date: string): void
   isWeatherLoadedOfDay: boolean
 }
 
-export interface IWeatherCard {
+interface IWeatherCard {
   date?: number | string
   weather: {
     temp: number
@@ -65,12 +48,12 @@ export interface IWeatherCard {
   heightIcon: string,
 }
 
-export interface ICitySelect {
+interface ICitySelect {
   city?: string
   selectCity(event: React.ChangeEvent<HTMLSelectElement>): void
 }
 
-export interface IDateInput {
+interface IDateInput {
   date?: string
   selectDate(event: React.ChangeEvent<HTMLInputElement>): void
 }
