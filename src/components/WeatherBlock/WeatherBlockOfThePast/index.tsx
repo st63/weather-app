@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
 
-import { DateInput } from '../Input'
-import { CitySelect } from '../CitySelect'
-import { WeatherCard } from '../WeatherCard'
-import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from './styles'
-import { WeatherSelectBlock } from './WeatherBlockOfThePast/styles'
-import placeholderIcon from '../../images/placeholder-icon.svg'
-import { formatDateDisplay } from '../../utils'
+import { DateInput } from '../../Input'
+import { CitySelect } from '../../CitySelect'
+import { WeatherCard } from '../../WeatherCard'
+import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from '../styles'
+import { WeatherSelectBlock } from './styles'
+import placeholderIcon from '../../../images/placeholder-icon.svg'
+import { formatDateDisplay } from '../../../utils'
 
-import { useWeatherByDate } from './hooks'
+import { useWeatherByDate } from '../hooks'
 
 export const WeatherBlockOfThePast: FC = () => {
   const { city, selectCity, date, selectDate, weather } = useWeatherByDate()

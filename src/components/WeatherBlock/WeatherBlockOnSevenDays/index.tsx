@@ -1,14 +1,14 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useMediaQuery } from 'beautiful-react-hooks'
-import { CitySelect } from '../CitySelect'
-import { WeatherCard } from '../WeatherCard'
-import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from './styles'
-import { WeatherContentWrapper, ArrowControlLeft, ArrowControlRight } from './WeatherBlockOnSevenDays/styles'
-import { IWeatherToDisplay } from '../../types'
-import placeholderIcon from '../../images/placeholder-icon.svg'
+import { CitySelect } from '../../CitySelect'
+import { WeatherCard } from '../../WeatherCard'
+import { WeatherBlock, WeatherTitle, EmptyWeatherBlock, EmptyWeatherIcon, EmptyWeatherPlaceholder } from '../styles'
+import { WeatherContentWrapper, ArrowControlLeft, ArrowControlRight } from './styles'
+import { IWeatherToDisplay } from '../../../types'
+import placeholderIcon from '../../../images/placeholder-icon.svg'
 
-import { useWeatherFields } from './hooks'
-import { Weather, getWeather } from '../../api'
+import { useWeatherFields } from '../hooks'
+import { Weather, getWeather } from '../../../api'
 
 const useWeatherList = () => {
   const [weathers, saveWeathers] = useState<Weather[]>()
