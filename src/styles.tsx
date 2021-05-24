@@ -6,6 +6,7 @@ export const AppBody = styled.div`
   background-color: #373AF5;
   background-image: url(${backgroundBottom}), url(${backgroundTop});
   background-position: 0% 100%,100% 0%;
+  min-height: 100vh;
 `
 
 export const Container = styled.div`
