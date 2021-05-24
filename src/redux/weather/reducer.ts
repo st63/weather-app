@@ -1,4 +1,4 @@
-import { Action, handleActions } from 'redux-actions'
+import { handleActions } from 'redux-actions'
 import { Weather, WeatherState } from './types'
 import { saveWeathers, saveWeather } from './actions'
 import { WeatherData } from '../../api'

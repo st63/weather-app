@@ -1,5 +1,7 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
+import { persistStore, persistReducer } from "redux-persist"
+import storage from 'redux-persist/lib/storage'
 import { weatherReducer } from './weather/reducer'
 
 const reducers = combineReducers({
@@ -18,4 +20,11 @@ if (isDebug && window.__REDUX_DEVTOOLS_EXTENSION__) {
   enhancer = compose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__())
 }
 
-export const store = createStore(reducers, enhancer)
+const persistConfig = {
+	key: 'root',
+	storage,
+ }
+
+export const store = createStore(persistReducer<any, any>(persistConfig, reducers), enhancer)
+
+export const persistor = persistStore(store);
