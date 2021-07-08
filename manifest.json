@@ -3,7 +3,7 @@
 	"name": "Weather App",
 	"lang": "en",
 	"description": "Weather viewing apps",
-	"start_url": "https://st63.github.io/weather-app/",
+	"start_url": "./?utm_source=web_app_manifest",
   "scope": "./",
 	"background_color": "#00aae7",
 	"theme_color": "#00aae7",
@@ -21,6 +21,7 @@
 			"type": "image/png",
 			"sizes": "192x192"
 		}
-	]
+	],
+  "prefer_related_applications": false
 }
 
