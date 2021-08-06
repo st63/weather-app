@@ -7,7 +7,7 @@ export const WeatherCard: FC<IWeatherCard> = ({ date, weather, width, heightIcon
   return (
     <WeatherCardInner width={width}>
       <Date>{date}</Date>
-      <Icon heightIcon={heightIcon} src={`http://openweathermap.org/img/wn/${weather.icon}.png`} />
+      <Icon heightIcon={heightIcon} src={`http://openweathermap.org/img/wn/${weather.icon}@4x.png`} />
       <Degrees>{sign}{weather.temp}°</Degrees>
     </WeatherCardInner>
   )
